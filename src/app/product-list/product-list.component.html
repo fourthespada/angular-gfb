@@ -1,0 +1,52 @@
+<div>
+  <div #divBullseye style="text-align:center">
+    <h2>The Bullseye</h2>
+    <p>Please mark each section to represent where you stand today</p>
+    <svg #svgTarget style="display:block; margin:auto; width:380px" fill="gray" text-anchor="middle" viewBox="0 0 200 200" preserveAspectRatio (mousedown)="svgDoClick($event)" (mouseup)="svgUnClick($event)" (mouseleave)="svgUnClick($event)" (mousemove)="svgClick($event)">
+      <circle cx="50%" cy="50%" r="99" stroke="gray" stroke-width="2" fill="white" pointer-events="none" />
+      <circle cx="50%" cy="50%" r="80" stroke="gray" stroke-width="1" fill="white" pointer-events="none"/>
+      <circle cx="50%" cy="50%" r="60" stroke="gray" stroke-width="1" fill="white" pointer-events="none"/>
+      <circle cx="50%" cy="50%" r="40" stroke="gray" stroke-width="1" fill="white" pointer-events="none"/>
+      <circle cx="50%" cy="50%" r="20" stroke="gray" stroke-width="1" fill="white" pointer-events="none"/>
+      <circle cx="50%" cy="50%" r="1" stroke="gray" stroke-width="1" fill="white" pointer-events="none"/>
+      <line x1="50%" y1="0" x2="50%" y2="100%" style="stroke:rgb(200,200,200);stroke-width:2" pointer-events="none"/>
+      <line x1="0%" y1="50%" x2="100%" y2="50%" style="stroke:rgb(200,200,200);stroke-width:2" pointer-events="none"/>
+      <circle *ngFor="let dot of products" 
+        stroke-width="1" [attr.stroke]="dot.color" r="1" [attr.cx]="dot.dotx" [attr.cy]="dot.doty" [attr.fill]="dot.color" pointer-events="none" 
+      />
+
+      <text *ngFor="let dot of products" text-anchor="start" font-size="0.6em" font-weight="bold" [attr.fill]="dot.color" [attr.x]="dot.dotx+1" [attr.y]="dot.doty-1" pointer-events="none">{{dot.value | number:'1.0-0'}}</text>
+      <text x="30" y="2em" font-size="0.5em" fill="gray">{{products[0].title}}</text>
+      <text x="170" y="2em" font-size="0.5em" fill="gray">{{products[1].title}}</text>
+      <text x="30" y="190" font-size="0.5em" fill="gray">{{products[2].title}}</text>
+      <text x="170" y="190" font-size="0.5em" fill="gray">{{products[3].title}}</text>
+
+      <text x="100" y="20" font-size="0.4em" fill="gray">80</text>
+      <text x="100" y="40" font-size="0.4em" fill="gray">60</text>
+      <text x="100" y="60" font-size="0.4em" fill="gray">40</text>
+      <text x="100" y="80" font-size="0.4em" fill="gray">20</text>
+    </svg>
+  </div>
+
+  <div *ngFor="let product of products">
+      <h3 style="margin-bottom:0px;">
+        <a [title]="product.name + ' details'">
+          {{ product.name }} [{{product.value | number:'1.0-0'}}]
+          </a>&nbsp;
+          <mat-slider min="0" max="100" step="1" (input)="product.value = $event.value;product.dotx=100+(product.dotxsign*$event.value/1.4142); product.doty=100+(product.dotysign*$event.value/1.4142)" [value]="product.value"></mat-slider>
+    </h3>
+    <p *ngIf="product.description" style="margin-top:0px;">
+      i.e. {{ product.description }}
+    </p>
+    <p *ngIf="product.userPersonalValues">{{product.userPersonalValues}}</p>
+    <!--
+    <button (click)="share()">
+      Slider
+    </button>-->
+  </div>
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
+</div>
