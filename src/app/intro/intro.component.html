@@ -27,13 +27,11 @@ We're not gonna call the police if you feel you're far from your own values or a
               {{ product.name }}
               </a>&nbsp;
           </h3>
-        <p *ngIf="product.description" style="margin-top:0px;">
-          i.e. {{ product.description }}
-        </p>
-
+<style>
+  </style>
         <mat-form-field style="width: 100%;">
           <!--<mat-label>Message</mat-label>-->
-          <textarea matInput #message cols="150" rows="1" maxlength="256" placeholder="">{{product.userValues}}</textarea>
+          <textarea matInput #message cols="150" rows="1" maxlength="256" placeholder="e.g. {{product.description}}">{{product.userValues}}</textarea>
           <mat-hint align="start">Don't disclose personal information</mat-hint>
           <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         </mat-form-field>

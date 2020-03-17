@@ -74,6 +74,12 @@ label {
   text-transform: uppercase;
 }
 
+.mat-form-field-label span
+{ 
+  text-transform: none !important;
+  color: #888 !important; 
+}
+
 /* Button */
 .button, button {
   display: inline-flex;

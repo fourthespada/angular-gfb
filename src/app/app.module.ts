@@ -8,17 +8,19 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 import { BullspickerComponent } from './bullspicker/bullspicker.component';
+import { IntroComponent } from './intro/intro.component';
+import { ViewEntriesComponent } from './view-entries/view-entries.component';
 
 import 'hammerjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, } from '@angular/material';
-import { IntroComponent } from './intro/intro.component';
-import { ViewEntriesComponent } from './view-entries/view-entries.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSliderModule,
     MatIconModule,
