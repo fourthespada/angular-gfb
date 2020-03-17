@@ -8,7 +8,7 @@ import { products } from '../products';
 })
 
 export class ProductListComponent {
-  @Input() products: products ;
+  products=products;
   continuousClick = false;
 
   @ViewChild('svgTarget', {static:true}) 

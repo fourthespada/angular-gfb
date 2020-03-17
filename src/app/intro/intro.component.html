@@ -1,0 +1,47 @@
+<div>
+  <h2>Hello.</h2>
+
+<p>Thank you for beta testing this lighthearted play/project.</p>
+<p>We need ten consecutive daily entries that reflect your PRESENT state of mind.</p>
+<p>We are interested in the journey, so please answer from your current daily state, rather than trying to summarize your life experiences, goals, or ideal states of being.</p>
+<p>This is NOT a HAPPINESS TRACKER.  It's a value evaluator, completely customized to your own values and not ours.<br>
+We're not gonna call the police if you feel you're far from your own values or acceptable social norms.
+</p>
+
+  <p>Please consider the following questions.</p>
+
+  <h4>
+  What really matters to you, deep in your heart?<br>
+  What do you want to do with your time on this planet?<br>
+  What sort of person do you want to be?<br>
+  What personal strengths and qualities do you want to develop?<br>
+  </h4>
+
+  <h6>
+  If you find that your concepts change throughout the experiment, please answer based ony our new ideas and not what you wrote down in this form.
+  There will be no judgements.  This entry is to guide you to personalize the concepts but is not the focus of this study.  
+  </h6>
+    <div *ngFor="let product of products">
+          <h3 style="margin-bottom:0px;">
+            <a [title]="product.name + ' details'">
+              {{ product.name }}
+              </a>&nbsp;
+          </h3>
+        <p *ngIf="product.description" style="margin-top:0px;">
+          i.e. {{ product.description }}
+        </p>
+
+        <mat-form-field style="width: 100%;">
+          <!--<mat-label>Message</mat-label>-->
+          <textarea matInput #message cols="150" rows="1" maxlength="256" placeholder="">{{product.userValues}}</textarea>
+          <mat-hint align="start">Don't disclose personal information</mat-hint>
+          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+        <br />
+        <!--
+        <button (click)="share()">
+          Slider
+        </button>-->
+    </div>
+  
+</div>
